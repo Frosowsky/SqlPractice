@@ -34,6 +34,7 @@ namespace SqlPractice
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show($"Użytkownik {NameBox.Text} został dodany do bazy");
+            
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
@@ -58,6 +59,20 @@ namespace SqlPractice
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show($"Użytkownik {NameBox.Text} został usunięty");
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from student where imie=@imie", con);
+            cmd.Parameters.AddWithValue("@imie", NameBox.Text);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
+            con.Close();
+            MessageBox.Show($"Użytkownik {NameBox.Text} został znaleziony");
+
         }
     }
 }
