@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.AddButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.SearchButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.NameBox = new System.Windows.Forms.TextBox();
+            this.SurnameBox = new System.Windows.Forms.TextBox();
+            this.EmailBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,21 +50,12 @@
             this.AddButton.TabIndex = 0;
             this.AddButton.Text = "Dodaj";
             this.AddButton.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(179, 365);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 39);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // UpdateButton
             // 
             this.UpdateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.UpdateButton.Location = new System.Drawing.Point(331, 365);
+            this.UpdateButton.Location = new System.Drawing.Point(179, 365);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(112, 39);
             this.UpdateButton.TabIndex = 2;
@@ -75,7 +65,7 @@
             // DeleteButton
             // 
             this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.DeleteButton.Location = new System.Drawing.Point(483, 365);
+            this.DeleteButton.Location = new System.Drawing.Point(331, 365);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(112, 39);
             this.DeleteButton.TabIndex = 3;
@@ -85,36 +75,36 @@
             // SearchButton
             // 
             this.SearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.SearchButton.Location = new System.Drawing.Point(648, 365);
+            this.SearchButton.Location = new System.Drawing.Point(482, 365);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(112, 39);
             this.SearchButton.TabIndex = 4;
             this.SearchButton.Text = "Wyszukaj";
             this.SearchButton.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // NameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(179, 89);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(264, 32);
-            this.textBox1.TabIndex = 5;
+            this.NameBox.Location = new System.Drawing.Point(179, 89);
+            this.NameBox.Multiline = true;
+            this.NameBox.Name = "NameBox";
+            this.NameBox.Size = new System.Drawing.Size(264, 32);
+            this.NameBox.TabIndex = 5;
             // 
-            // textBox2
+            // SurnameBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(179, 172);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(264, 32);
-            this.textBox2.TabIndex = 6;
+            this.SurnameBox.Location = new System.Drawing.Point(179, 172);
+            this.SurnameBox.Multiline = true;
+            this.SurnameBox.Name = "SurnameBox";
+            this.SurnameBox.Size = new System.Drawing.Size(264, 32);
+            this.SurnameBox.TabIndex = 6;
             // 
-            // textBox3
+            // EmailBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(179, 251);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(264, 32);
-            this.textBox3.TabIndex = 7;
+            this.EmailBox.Location = new System.Drawing.Point(179, 251);
+            this.EmailBox.Multiline = true;
+            this.EmailBox.Name = "EmailBox";
+            this.EmailBox.Size = new System.Drawing.Size(264, 32);
+            this.EmailBox.TabIndex = 7;
             // 
             // label1
             // 
@@ -173,13 +163,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.EmailBox);
+            this.Controls.Add(this.SurnameBox);
+            this.Controls.Add(this.NameBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.UpdateButton);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.AddButton);
             this.Name = "Form1";
             this.Text = "Studenci";
@@ -191,13 +180,12 @@
         #endregion
 
         private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button SearchButton;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox NameBox;
+        private System.Windows.Forms.TextBox SurnameBox;
+        private System.Windows.Forms.TextBox EmailBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
