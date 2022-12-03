@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,76 @@ namespace SqlPractice
         {
             InitializeComponent();
         }
+
+        static string connectionString = "Data Source=DESKTOP-1NUMHB5\\SQLEXPRESS01;Initial Catalog=MyFirstProject;Integrated Security=True";
+        SqlConnection con = new SqlConnection(connectionString);
+
+     
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            
+            con.Open();
+            SqlCommand cmd = new SqlCommand("insert into Student values (@imie, @nazwisko, @email)", con);
+            cmd.Parameters.AddWithValue("@imie", NameBox.Text);
+            cmd.Parameters.AddWithValue("@nazwisko", SurnameBox.Text);
+            cmd.Parameters.AddWithValue("@email", EmailBox.Text);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show($"Użytkownik {NameBox.Text} został dodany do bazy");
+            Refresh();
+
+
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update Student set nazwisko=@nazwisko, email= @email where imie = @imie", con);
+            cmd.Parameters.AddWithValue("@imie", NameBox.Text);
+            cmd.Parameters.AddWithValue("@nazwisko", SurnameBox.Text);
+            cmd.Parameters.AddWithValue("@email", EmailBox.Text);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show($"Użytkownik {NameBox.Text} został zaktualizowany");
+            Refresh();
+
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("delete Student where imie=@imie and nazwisko=@nazwisko", con);
+            cmd.Parameters.AddWithValue("@imie", NameBox.Text);
+            cmd.Parameters.AddWithValue("@nazwisko", SurnameBox.Text);        
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show($"Użytkownik {NameBox.Text} został usunięty");
+            Refresh();
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from student where imie=@imie", con);
+            cmd.Parameters.AddWithValue("@imie", NameBox.Text);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
+            con.Close();
+            MessageBox.Show($"Użytkownik {NameBox.Text} został znaleziony");
+            Refresh();
+
+        }
+
+        private void Refresh(object sender)
+        {
+            NameBox.Clear();
+            SurnameBox.Clear();
+            EmailBox.Clear();
+        }
+
+
     }
 }
