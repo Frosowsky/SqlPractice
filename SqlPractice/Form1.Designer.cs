@@ -61,6 +61,7 @@
             this.UpdateButton.TabIndex = 2;
             this.UpdateButton.Text = "Aktualizuj";
             this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // DeleteButton
             // 
@@ -71,6 +72,7 @@
             this.DeleteButton.TabIndex = 3;
             this.DeleteButton.Text = "Usuń";
             this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // SearchButton
             // 
