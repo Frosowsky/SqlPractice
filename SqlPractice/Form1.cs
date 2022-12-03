@@ -34,7 +34,9 @@ namespace SqlPractice
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show($"Użytkownik {NameBox.Text} został dodany do bazy");
-            
+            Refresh();
+
+
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
@@ -47,6 +49,7 @@ namespace SqlPractice
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show($"Użytkownik {NameBox.Text} został zaktualizowany");
+            Refresh();
 
         }
 
@@ -59,6 +62,7 @@ namespace SqlPractice
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show($"Użytkownik {NameBox.Text} został usunięty");
+            Refresh();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -72,7 +76,17 @@ namespace SqlPractice
             dataGridView1.DataSource = dataTable;
             con.Close();
             MessageBox.Show($"Użytkownik {NameBox.Text} został znaleziony");
+            Refresh();
 
         }
+
+        private void Refresh(object sender)
+        {
+            NameBox.Clear();
+            SurnameBox.Clear();
+            EmailBox.Clear();
+        }
+
+
     }
 }
